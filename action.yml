@@ -117,7 +117,7 @@ runs:
       shell: bash
       run: |
         if [[ "${{ inputs.build }}" == "true" ]]; then
-          cargo build --release --bin antctl --features local
+          cargo build --release --bin antctl
           sudo mv target/release/antctl /usr/local/bin
           if [[ "${{ inputs.enable-evm-testnet }}" == "true" ]]; then
             cargo build --release --bin evm-testnet
@@ -134,7 +134,7 @@ runs:
       run: |
         if [[ "${{ inputs.build }}" == "true" ]]; then
           TEMP_DIR=$(mktemp -d)
-          cargo build --release --bin antctl --features local
+          cargo build --release --bin antctl
           sudo mv target/release/antctl /usr/local/bin
           if [[ "${{ inputs.enable-evm-testnet }}" == "true" ]]; then
             cargo build --release --bin evm-testnet
@@ -153,7 +153,7 @@ runs:
         $destination = "C:\Users\runneradmin\AppData\Local\Microsoft\WindowsApps"
 
         if ("${{ inputs.build }}" -eq "true") {
-          cargo build --release --bin antctl --features local
+          cargo build --release --bin antctl
           Copy-Item .\target\release\antctl.exe -Destination $destination
           if ("${{ inputs.enable-evm-testnet }}" -eq "true") {
             cargo build --release --bin evm-testnet
